@@ -21,9 +21,17 @@ app.get('/',(req,res)=>{
         <body>
         <h1>Welcome to my Website !</h1>
         <p>This page has been viewed ${newCount} times ! </p>
+        <br>
+        <a href="/reset">Reset</a>
         </body>
         </html>
     `)
+})
+
+app.get('/reset',(req,res)=>{
+    writeFileSync('./count.txt',`0`)
+    res.redirect('/')
+    console.log("got reset command")
 })
 
 app.listen(5000, ()=>{
